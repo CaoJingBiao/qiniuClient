@@ -186,7 +186,7 @@ class baseBucket {
             if (this.paging) {
                 this.files = this.files.concat(Object.freeze(tempFiles))
             } else {
-                if (loadState === 1 && typeof window !== "undefined" && window.cosDB) {
+                if (typeof window !== "undefined" && window.cosDB) {
                     await indexedDBHelper.clearRecord(cosDB, this.name)
                     await indexedDBHelper.addRecord(cosDB, this.name, tempFiles, true)
                     EventBus.$emit(Constants.Event.syncing, false)
